@@ -6,18 +6,24 @@ const getNotes = require('./notes.js');
 yargs.version('1.1.0');
 
 // Create add command
+// node app.js add --title="My title" --body="my body"
 yargs.command({
   command: 'add',
   describe: 'Add a note',
   builder: {
     title: {
       describe: 'Note title',
-      demandOption: true, // if true => title arg is required, default is false
+      demandOption: true, // if true => "title" arg is required, default is false
       type: 'string' // default => boolean
+    },
+    body: {
+      describe: "Note's body",
+      demandOption: true,
+      type: 'string'
     }
   },
-  handler: function() {
-    console.log('Adding note...');
+  handler: argv => {
+    console.log(`Title: ${argv.title} \nbody: ${argv.body}`);
   }
 });
 
@@ -49,4 +55,4 @@ yargs.command({
 });
 
 yargs.parse(); // loging to console "Reading a note a note..."
-console.log(yargs.argv);
+// console.log(yargs.argv);
