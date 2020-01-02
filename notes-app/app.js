@@ -9,6 +9,13 @@ yargs.version('1.1.0');
 yargs.command({
   command: 'add',
   describe: 'Add a note',
+  builder: {
+    title: {
+      describe: 'Note title',
+      demandOption: true, // if true => title arg is required, default is false
+      type: 'string' // default => boolean
+    }
+  },
   handler: function() {
     console.log('Adding note...');
   }
@@ -41,4 +48,5 @@ yargs.command({
   }
 });
 
+yargs.parse(); // loging to console "Reading a note a note..."
 console.log(yargs.argv);
