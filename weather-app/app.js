@@ -46,16 +46,17 @@ if (!location) {
   console.log('Please provide location');
 } else {
   // callback chaining
-  geocode(location, (error, data) => {
+  // geocode(location, (error, data) => {
+  geocode(location, (error, { latitude, longitude }) => {
     if (error) {
       return console.log(error);
     }
     if (geocode) {
-      forecast(data.latitude, data.longitude, (error, forecastData) => {
+      forecast(latitude, longitude, (error, forecastData) => {
         if (error) {
           return console.log(error);
         }
-        console.log(data.location);
+        console.log(location);
         console.log(forecastData);
       });
     }
