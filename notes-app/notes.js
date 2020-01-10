@@ -7,8 +7,9 @@ const addNote = (title, body) => {
   // #1 const duplicateNotes = notes.filter(note => note.title === title); //'filter' will go over all 100500 notes
   const duplicateNotes = notes.find(note => note.title === title); // will find the first occurance of 'note' and exit
 
+  debugger;
   // #1 if (duplicateNotes.length === 0) {
-  if (!duplicateNote) {
+  if (!duplicateNotes) {
     notes.push({ title, body });
     saveNotes(notes);
     console.log(chalk.green.inverse('A new note added'));
