@@ -18,6 +18,9 @@ const forecast = (latitude, longitude, callback) => {
   )},${encodeURIComponent(longitude)}?units=si`;
 
   request({ url, json: true }, (error, response) => {
+    const temperature = response.body.currently.temperature;
+    const precipProbability = response.body.currently.precipProbability;
+
     if (error) {
       callback('Unable to connect to weather service', undefined);
     } else if (response.body.error) {
