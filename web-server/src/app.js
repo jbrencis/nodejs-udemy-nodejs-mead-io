@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const hbs = require('hbs');
 
 const app = express();
 
@@ -9,11 +10,15 @@ const app = express();
 
 // Define path for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
-const viewPath = path.join(__dirname, '../templates'); // by default directorty should be named "views" and path shouldn't be provided in this case
+const viewPath = path.join(__dirname, '../templates/views'); // by default directorty should be named "views" and path shouldn't be provided in this case
+const partialsPath = path.join(__dirname, '../templates/partials');
 
 // Setup handlebars and views location
 app.set('view engine', 'hbs'); // hbs like handlebars
 app.set('views', viewPath);
+hbs.registerPartials(partialsPath);
+
+// to handle hbs changes - run : nodemon src/app.js -e js,hbs
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
