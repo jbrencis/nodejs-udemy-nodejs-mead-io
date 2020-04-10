@@ -6,6 +6,7 @@ const forecast = require('./utils/forecast');
 const geocode = require('./utils/geocode');
 
 const app = express();
+const port = process.env.PORT || 3000; //for Heroku process.env.PORT
 
 // console.log(__dirname);
 // console.log(__filename);
@@ -29,14 +30,14 @@ app.use(express.static(publicDirectoryPath));
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Weather',
-    name: 'Jev'
+    name: 'Jev',
   }); // renders views/index.hbs (index.hthl from static folder should be deleted)
 });
 
 app.get('/about', (req, res) =>
   res.render('about', {
     title: 'About',
-    name: 'Bender'
+    name: 'Bender',
   })
 );
 
@@ -62,7 +63,7 @@ app.get('/weather', (req, res) => {
         res.send({
           forecast: forecastData,
           location,
-          adress: req.query.address
+          adress: req.query.address,
         });
       });
     }
@@ -85,7 +86,7 @@ app.get('/help/*', (req, res) => {
   res.render('404', {
     title: '404',
     name: 'Jev',
-    errorMessage: 'Help article not found'
+    errorMessage: 'Help article not found',
   });
 });
 
@@ -94,10 +95,9 @@ app.get('*', (req, res) =>
   res.render('404', {
     title: '404',
     name: 'Jev',
-    errorMessage: 'Page not found'
+    errorMessage: 'Page not found',
   })
 );
-const port = 3000;
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
