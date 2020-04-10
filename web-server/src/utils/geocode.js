@@ -1,7 +1,7 @@
 const request = require('request');
 
 const geocode = (address, callback) => {
-  // encodeURIComponent ==> '?' becomes '%3F' => if adress = '?' app will brake
+  // encodeURIComponent ==> '?' becomes '%3F'
 
   const geocodeURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(
     address

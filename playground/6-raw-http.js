@@ -12,7 +12,6 @@ const request = https.request(url, response => {
 
   response.on('end', () => {
     const body = JSON.parse(data);
-
     console.log(body);
   });
 });
